@@ -12,10 +12,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        loader: () =>
-          fetch(
-            `https://pro-course-3xlz8a6qc-mahiuddinzilanis-projects.vercel.app/`
-          ),
+        // loader: () =>
+        //   fetch(
+        //     `https://pro-course-3xlz8a6qc-mahiuddinzilanis-projects.vercel.app/`
+        //   ),
         element: <Home />,
       },
       {

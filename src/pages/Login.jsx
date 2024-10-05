@@ -1,13 +1,31 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, Navigate } from "react-router-dom";
+import { AuthContext } from "../providers/AuthProvider";
 
 const Login = () => {
+  const { user, login } = useContext(AuthContext);
+
+  if (user) {
+    return (
+      <>
+        <Navigate to={"/"}></Navigate>
+      </>
+    );
+  }
+
   const handleLogin = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
+
     const email = form.get("email");
     const password = form.get("password");
+
     e.target.reset();
     console.log(email, password);
+
+    login(email, password)
+      .then((result) => console.log(result.user))
+      .catch((error) => console.log(error));
   };
 
   return (
