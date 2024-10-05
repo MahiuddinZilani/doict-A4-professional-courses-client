@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const email = form.get("email");
+    const password = form.get("password");
+    e.target.reset();
+    console.log(email, password);
+  };
+
   return (
     <div>
       <div className="w-full max-w-sm p-6 m-auto mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
@@ -11,15 +20,17 @@ const Login = () => {
             alt=""
           />
         </div>
-        <form className="mt-6">
+        {/* form  */}
+        <form onSubmit={handleLogin} className="mt-6">
           <div>
             <label
-              htmlFor="username"
+              htmlFor="email"
               className="block text-sm text-gray-800 dark:text-gray-200"
             >
-              Username
+              Email
             </label>
             <input
+              name="email"
               type="text"
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
@@ -40,16 +51,22 @@ const Login = () => {
               </a>
             </div>
             <input
+              name="password"
               type="password"
               className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
           <div className="mt-6">
-            <button className="w-full px-6 py-2.5 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50">
+            <button
+              type="submit"
+              className="w-full px-6 py-2.5 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-800 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring focus:ring-gray-300 focus:ring-opacity-50"
+            >
               Log In
             </button>
           </div>
         </form>
+
+        {/* other login title */}
         <div className="flex items-center justify-between mt-4">
           <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/5" />
           <a
@@ -60,6 +77,8 @@ const Login = () => {
           </a>
           <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/5" />
         </div>
+
+        {/* other login option  */}
         <div className="flex items-center mt-6 -mx-2">
           <button
             type="button"
@@ -79,6 +98,8 @@ const Login = () => {
             </svg>
           </a>
         </div>
+
+        {/* navigation link to registration page */}
         <p className="mt-8 text-xs font-light text-center text-gray-400">
           {" "}
           Don&apos;t have an account?{" "}

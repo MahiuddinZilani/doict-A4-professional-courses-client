@@ -1,11 +1,24 @@
 import { Link } from "react-router-dom";
 
 const Registration = () => {
+  const handleRegistration = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+
+    const userName = formData.get("userName");
+    const email = formData.get("email");
+    const password = formData.get("password");
+    const confirmPassword = formData.get("confirmPassword");
+    const photo = formData.get("photo");
+
+    event.target.reset();
+    console.log(userName, email, password, confirmPassword, photo);
+  };
   return (
     <div>
       <section className="bg-white dark:bg-gray-900">
         <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
-          <form className="w-full max-w-md">
+          <form onSubmit={handleRegistration} className="w-full max-w-md">
             <div className="flex justify-center mx-auto">
               <img
                 className="w-auto h-7 sm:h-8"
@@ -14,6 +27,7 @@ const Registration = () => {
               />
             </div>
 
+            {/* userName */}
             <div className="relative flex items-center mt-8">
               <span className="absolute">
                 <svg
@@ -35,8 +49,11 @@ const Registration = () => {
                 type="text"
                 className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 placeholder="Username"
+                name="userName"
               />
             </div>
+
+            {/* photo */}
             <label
               htmlFor="dropzone-file"
               className="flex items-center px-3 py-3 mx-auto mt-6 text-center bg-white border-2 border-dashed rounded-lg cursor-pointer dark:border-gray-600 dark:bg-gray-900"
@@ -56,8 +73,15 @@ const Registration = () => {
                 />
               </svg>
               <h2 className="mx-3 text-gray-400">Profile Photo</h2>
-              <input id="dropzone-file" type="file" className="hidden" />
+              <input
+                id="dropzone-file"
+                type="file"
+                className="hidden"
+                name="photo"
+              />
             </label>
+
+            {/* email  */}
             <div className="relative flex items-center mt-6">
               <span className="absolute">
                 <svg
@@ -79,8 +103,12 @@ const Registration = () => {
                 type="email"
                 className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 placeholder="Email address"
+                name="email"
+                required
               />
             </div>
+
+            {/* password  */}
             <div className="relative flex items-center mt-4">
               <span className="absolute">
                 <svg
@@ -102,8 +130,11 @@ const Registration = () => {
                 type="password"
                 className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 placeholder="Password"
+                name="password"
               />
             </div>
+
+            {/* confirmPassword */}
             <div className="relative flex items-center mt-4">
               <span className="absolute">
                 <svg
@@ -125,10 +156,16 @@ const Registration = () => {
                 type="password"
                 className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                 placeholder="Confirm Password"
+                name="confirmPassword"
               />
             </div>
+
+            {/* registration  */}
             <div className="mt-6">
-              <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+              <button
+                type="submit"
+                className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-lg hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+              >
                 Registration
               </button>
               <div className="mt-6 text-center ">

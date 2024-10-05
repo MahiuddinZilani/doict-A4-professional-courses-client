@@ -26,15 +26,15 @@ const router = createBrowserRouter([
           ),
         element: <Products />,
       },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/registration",
+        element: <Registration />,
+      },
     ],
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/registration",
-    element: <Registration />,
   },
 ]);
 
