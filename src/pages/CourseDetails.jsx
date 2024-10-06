@@ -11,7 +11,7 @@ const CourseDetails = () => {
     )
       .then((response) => response.json())
       .then((data) => setCourse(data));
-  }, []);
+  }, [id]);
 
   const {
     title,

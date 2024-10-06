@@ -5,7 +5,6 @@ import Products from "../pages/Products";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import CourseDetails from "../pages/CourseDetails";
-import { data } from "autoprefixer";
 
 const router = createBrowserRouter([
   {

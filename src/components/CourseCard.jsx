@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const CourseCard = ({ course }) => {
   const {
@@ -72,3 +73,7 @@ const CourseCard = ({ course }) => {
 };
 
 export default CourseCard;
+
+CourseCard.propTypes = {
+  course: PropTypes.object,
+};
