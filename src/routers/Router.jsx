@@ -5,6 +5,7 @@ import Products from "../pages/Products";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import CourseDetails from "../pages/CourseDetails";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -25,12 +26,19 @@ const router = createBrowserRouter([
           fetch(
             `https://pro-course-3xlz8a6qc-mahiuddinzilanis-projects.vercel.app/courses/`
           ),
-        element: <Products />,
+        element: (
+          <PrivateRoutes>
+            <Products />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/products/:id",
-        loader: ({ params }) => params,
-        element: <CourseDetails />,
+        element: (
+          <PrivateRoutes>
+            <CourseDetails />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/login",
