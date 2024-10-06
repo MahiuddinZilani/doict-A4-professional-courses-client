@@ -4,6 +4,8 @@ import Home from "../pages/Home";
 import Products from "../pages/Products";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
+import CourseDetails from "../pages/CourseDetails";
+import { data } from "autoprefixer";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,11 @@ const router = createBrowserRouter([
             `https://pro-course-3xlz8a6qc-mahiuddinzilanis-projects.vercel.app/courses/`
           ),
         element: <Products />,
+      },
+      {
+        path: "/products/:id",
+        loader: ({ params }) => params,
+        element: <CourseDetails />,
       },
       {
         path: "/login",
