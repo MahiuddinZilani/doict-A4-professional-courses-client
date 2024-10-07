@@ -24,8 +24,9 @@ const router = createBrowserRouter([
         path: "/products",
         loader: () =>
           fetch(
-            `https://pro-course-3xlz8a6qc-mahiuddinzilanis-projects.vercel.app/courses/`
+            `https://pro-course-39y60bkzw-mahiuddinzilanis-projects.vercel.app/courses/`
           ),
+        // fetch(`http://localhost:5000/courses/`),
         element: (
           <PrivateRoutes>
             <Products />

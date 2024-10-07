@@ -1,19 +1,15 @@
 import { useContext } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
 
 const Login = () => {
-  const { user, login, logInWithGoogle, logInWithFacebook, logInWithGithub } =
+  const { login, logInWithGoogle, logInWithFacebook, logInWithGithub } =
     useContext(AuthContext);
 
-  if (user) {
-    return (
-      <>
-        <Navigate to={"/"}></Navigate>
-      </>
-    );
-  }
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -26,7 +22,10 @@ const Login = () => {
     console.log(email, password);
 
     login(email, password)
-      .then((result) => console.log(result.user))
+      .then((result) => {
+        console.log(result.user);
+        navigate(location?.state ? location.state : "/");
+      })
       .catch((error) => console.log(error));
   };
 
