@@ -67,6 +67,7 @@ const Navbar = () => {
 
         {/* navbar end */}
         <div className="navbar-end flex items-center gap-4">
+          {user?.displayName ? <p>{user.displayName}</p> : <p>{user.email}</p>}
           {user ? (
             <div className="dropdown dropdown-end">
               <div

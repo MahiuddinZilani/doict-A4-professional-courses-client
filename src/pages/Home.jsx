@@ -173,24 +173,24 @@ const Home = () => {
       <HowItWorks></HowItWorks>
 
       {/* Image Section */}
-      <section className="py-16">
+      <section className="py-16 bg-slate-200">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-semibold text-gray-800 mb-8">
             Explore Our Courses
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <img
-              className="rounded-lg shadow-lg  h-72 w-full"
+              className="rounded-lg shadow-lg w-1/2 md:w-full h-52 md:h-72 mx-auto"
               src="https://live.staticflickr.com/65535/52413593240_e00326e727_o.png"
               alt="IT Course 1"
             />
             <img
-              className="rounded-lg shadow-lg h-72 w-full"
+              className="rounded-lg shadow-lg w-1/2 md:w-full h-52 md:h-72 mx-auto"
               src="https://live.staticflickr.com/65535/52413665713_5977a693cb_o.png"
               alt="IT Course 2"
             />
             <img
-              className="rounded-lg shadow-lg h-72 w-full"
+              className="rounded-lg shadow-lg w-1/2 md:w-full h-52 md:h-72 mx-auto"
               src="https://coderstrustbd.com/wp-content/uploads/2021/06/dgm-n.jpg"
               alt="IT Course 3"
             />

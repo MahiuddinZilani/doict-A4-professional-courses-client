@@ -2,7 +2,7 @@ import owner from "../../public/owner-image.jpg";
 const AboutOwner = () => {
   return (
     <div>
-      <section className="py-16">
+      <section className="py-16 bg-slate-100">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-4xl font-semibold text-gray-800 mb-8">
             About Director
@@ -19,7 +19,7 @@ const AboutOwner = () => {
             <h3 className="text-2xl font-medium text-gray-900">
               Upazila ICT Officer
             </h3>
-            <h3 className="text-xl font-medium text-gray-500">
+            <h3 className="text-xl font-medium text-gray-600">
               ICT Division, Ministry of Post, Telecommunication & ICT
             </h3>
             <p className="text-lg leading-relaxed mt-4 text-gray-600">
