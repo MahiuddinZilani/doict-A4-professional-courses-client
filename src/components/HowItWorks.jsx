@@ -1,9 +1,9 @@
 const HowItWorks = () => {
   return (
-    <section className="bg-gray-100 py-16 px-4">
+    <section className="bg-[#242145] py-8 px-4">
       <div className="max-w-5xl mx-auto text-center">
         {/* Title */}
-        <h2 className="text-4xl font-bold text-gray-800 mb-8">How It Works</h2>
+        <h2 className="text-4xl font-bold text-gray-300 mb-8">How It Works</h2>
 
         {/* Steps */}
         <div className=" grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300">
