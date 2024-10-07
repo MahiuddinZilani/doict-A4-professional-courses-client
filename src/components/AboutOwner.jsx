@@ -1,4 +1,4 @@
-import owner from "../../public/owner-image.jpg";
+import owner from "/public/owner-image.jpg";
 const AboutOwner = () => {
   return (
     <div>

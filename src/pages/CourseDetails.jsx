@@ -7,7 +7,7 @@ const CourseDetails = () => {
 
   useEffect(() => {
     fetch(
-      `https://pro-course-3xlz8a6qc-mahiuddinzilanis-projects.vercel.app/courses/${id}`
+      `https://pro-course-39y60bkzw-mahiuddinzilanis-projects.vercel.app/courses/${id}`
     )
       .then((response) => response.json())
       .then((data) => setCourse(data));

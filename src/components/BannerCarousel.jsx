@@ -3,6 +3,7 @@ import carousel1 from "../../public/carousel-1.webp";
 import carousel2 from "../../public/carousel-2.webp";
 import carousel3 from "../../public/carousel-3.jpg";
 import carousel4 from "../../public/carousel-4.jpeg";
+import { Link } from "react-router-dom";
 
 const BannerCarousel = () => {
   const images = [carousel1, carousel2, carousel3, carousel4];
@@ -30,12 +31,45 @@ const BannerCarousel = () => {
         <p className="text-sm md:text-xl mt-4">
           Empowering your future in the tech industry
         </p>
-        <a
-          href="#contact"
-          className="mt-6 inline-block text-white bg-[#242145] px-6 py-3 rounded-full font-semibold text-lg hover:bg-amber-600 transition duration-300"
+        <Link
+          to={"/products"}
+          className="mt-6 inline-block text-white bg-[#242145] px-6 py-3 rounded-full font-semibold text-lg hover:bg-white hover:text-[#242145] transition duration-300"
         >
-          Enroll Now
-        </a>
+          Explore Our Courses
+        </Link>
+        {/* Left and Right Arrows */}
+        <button
+          className="absolute top-1/2 left-4 transform -translate-y-1/2  p-2 rounded-full shadow-md"
+          onClick={() =>
+            setCurrentIndex(
+              currentIndex === 0 ? images.length - 1 : currentIndex - 1
+            )
+          }
+        >
+          &#10094;
+        </button>
+        <button
+          className="absolute top-1/2 right-4 transform -translate-y-1/2  p-2 rounded-full shadow-md"
+          onClick={() =>
+            setCurrentIndex(
+              currentIndex === images.length - 1 ? 0 : currentIndex + 1
+            )
+          }
+        >
+          &#10095;
+        </button>
+
+        {/* Dots Indicator */}
+        <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+          {images.map((_, index) => (
+            <div
+              key={index}
+              className={`h-2 w-2 rounded-full ${
+                index === currentIndex ? "bg-amber-300" : "bg-white"
+              }`}
+            ></div>
+          ))}
+        </div>
       </div>
       {/* Carousel Images */}
       <div
@@ -49,40 +83,6 @@ const BannerCarousel = () => {
             alt={`Slide ${index + 1}`}
             className="w-full object-fill"
           />
-        ))}
-      </div>
-
-      {/* Left and Right Arrows */}
-      <button
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md"
-        onClick={() =>
-          setCurrentIndex(
-            currentIndex === 0 ? images.length - 1 : currentIndex - 1
-          )
-        }
-      >
-        &#10094;
-      </button>
-      <button
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white p-2 rounded-full shadow-md"
-        onClick={() =>
-          setCurrentIndex(
-            currentIndex === images.length - 1 ? 0 : currentIndex + 1
-          )
-        }
-      >
-        &#10095;
-      </button>
-
-      {/* Dots Indicator */}
-      <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
-        {images.map((_, index) => (
-          <div
-            key={index}
-            className={`h-2 w-2 rounded-full ${
-              index === currentIndex ? "bg-blue-600" : "bg-gray-300"
-            }`}
-          ></div>
         ))}
       </div>
     </div>

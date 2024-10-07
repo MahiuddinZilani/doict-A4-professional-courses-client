@@ -8,7 +8,6 @@
 import AboutOwner from "../components/AboutOwner";
 import BannerCarousel from "../components/BannerCarousel";
 import ContactUs from "../components/ContactUs";
-import Footer from "../components/Footer";
 import HowItWorks from "../components/HowItWorks";
 
 //   // const { name } = useContext(AuthContext);
@@ -203,9 +202,6 @@ const Home = () => {
 
       {/* About Us Section */}
       <AboutOwner />
-
-      {/* Footer Section */}
-      <Footer />
     </div>
   );
 };
