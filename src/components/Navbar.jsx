@@ -61,7 +61,7 @@ const Navbar = () => {
               {menu}
             </ul>
           </div>
-          <Link to={"/"} className="flex justify-center items-center gap-6">
+          <Link to={"/"} className="flex justify-center items-center gap-6 ">
             <img src={logo} alt="" className="w-20 h-12" />
             <a className="hidden md:flex md:text-2xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
               DevUp Courses
@@ -105,7 +105,12 @@ const Navbar = () => {
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-72 p-2 shadow text-black "
                 >
                   <li>
-                    <span className="font-bold">Name:</span> {user.displayName}
+                    <span className="font-bold">
+                      Name:{" "}
+                      <span className="font-medium text-gray-600">
+                        {user.displayName}
+                      </span>
+                    </span>
                   </li>
                   <li>
                     <span className="font-bold ">
@@ -128,8 +133,11 @@ const Navbar = () => {
               </div>
             </div>
           ) : (
-            <NavLink to={"/login"}>
-              <button className="btn">Login/ Register</button>
+            <NavLink
+              to={"/login"}
+              className=" font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent hover:scale-125 transition-transform duration-100"
+            >
+              <button>Login/ Register</button>
             </NavLink>
           )}
         </div>

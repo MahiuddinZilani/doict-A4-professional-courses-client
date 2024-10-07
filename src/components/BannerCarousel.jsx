@@ -33,7 +33,7 @@ const BannerCarousel = () => {
         </p>
         <Link
           to={"/products"}
-          className="mt-6 inline-block text-white bg-[#242145] px-6 py-3 rounded-full font-semibold text-lg hover:bg-white hover:text-[#242145] transition duration-300"
+          className="sticky mt-6 inline-block text-white bg-[#242145] px-6 py-3 rounded-full font-semibold text-lg hover:bg-white hover:text-[#242145] transition duration-300"
         >
           Explore Our Courses
         </Link>

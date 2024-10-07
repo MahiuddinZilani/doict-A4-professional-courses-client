@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import logo from "/logo.png";
 
 const Registration = () => {
   const { createUser } = useContext(AuthContext);
@@ -29,15 +30,11 @@ const Registration = () => {
 
   return (
     <div>
-      <section className="bg-white dark:bg-gray-900">
-        <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
+      <section className="bg-gray-100 dark:bg-gray-900">
+        <div className="container flex items-center justify-center min-h-screen px-6 mx-auto ">
           <form onSubmit={handleRegistration} className="w-full max-w-md">
             <div className="flex justify-center mx-auto">
-              <img
-                className="w-auto h-7 sm:h-8"
-                src="https://merakiui.com/images/logo.svg"
-                alt=""
-              />
+              <img className="w-20 h-12 md:h-18" src={logo} alt="" />
             </div>
 
             {/* userName */}
