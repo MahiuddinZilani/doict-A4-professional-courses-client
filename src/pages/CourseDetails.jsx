@@ -37,11 +37,13 @@ const CourseDetails = () => {
             <img
               src={img_url}
               alt={title}
-              className="object-cover w-full h-full opacity-90"
+              className="object-fill w-full h-full opacity-90"
             />
             <div className="absolute inset-0 bg-black bg-opacity-30 flex flex-col justify-center items-center">
               <h1 className="text-4xl font-bold text-white">{title}</h1>
-              <p className="text-lg text-gray-300 mt-2">{level} Level</p>
+              <p className="text-lg text-gray-300 mt-2 bg-teal-600 px-4 py- rounded-lg">
+                {level} Level
+              </p>
               <button className="mt-4 bg-[#242145] text-white font-semibold py-2 px-4 rounded-lg hover:bg-pink-900 transition-colors">
                 Enroll Now - ${price}
               </button>

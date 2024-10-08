@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import { RxAvatar } from "react-icons/rx";
+import { Tooltip } from "react-tooltip";
 import logo from "../../public/logo.png";
 
 const Navbar = () => {
@@ -88,6 +89,8 @@ const Navbar = () => {
                   tabIndex={0}
                   role="button"
                   className="btn btn-ghost btn-circle avatar"
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content="Click Here to find LogOut"
                 >
                   <div className="w-9 rounded-full ">
                     {user.photoURL ? (
@@ -135,12 +138,13 @@ const Navbar = () => {
           ) : (
             <NavLink
               to={"/login"}
-              className=" font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent hover:scale-125 transition-transform duration-100"
+              className="border px-4 py-2 rounded-xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent hover:scale-125 transition-transform duration-100"
             >
               <button>Login/ Register</button>
             </NavLink>
           )}
         </div>
+        <Tooltip id="my-tooltip" />
       </div>
     </div>
   );
