@@ -1,10 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import logo from "/logo.png";
 
 const Registration = () => {
   const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleRegistration = (event) => {
     event.preventDefault();
@@ -21,6 +23,7 @@ const Registration = () => {
 
     createUser(email, password)
       .then((result) => {
+        navigate(location?.state ? location.state : "/");
         console.log(result.user);
       })
       .catch((error) => {
