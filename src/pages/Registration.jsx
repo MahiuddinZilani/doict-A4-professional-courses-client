@@ -1,38 +1,68 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import logo from "/logo.png";
 
 const Registration = () => {
   const { createUser } = useContext(AuthContext);
+  const [registerError, setRegisterError] = useState("");
+  const [registerSuccess, setRegisterSuccess] = useState("");
+
   const navigate = useNavigate();
   const location = useLocation();
 
+  // handleRegistration function definition
   const handleRegistration = (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
-    const userName = formData.get("userName");
+    // const userName = formData.get("userName");
     const email = formData.get("email");
     const password = formData.get("password");
-    const confirmPassword = formData.get("confirmPassword");
-    const photo = formData.get("photo");
+    // const confirmPassword = formData.get("confirmPassword");
+    // const photo = formData.get("photo");
 
     event.target.reset();
-    console.log(userName, email, password, confirmPassword, photo);
+    setRegisterError("");
+    setRegisterSuccess("");
 
     createUser(email, password)
       .then((result) => {
-        navigate(location?.state ? location.state : "/");
+        setRegisterSuccess("User created successfully.");
+        // navigate(location?.state ? location.state : "/");
+
         console.log(result.user);
       })
       .catch((error) => {
         console.error(error);
+        setRegisterError(error.message);
       });
   };
 
+  // Trigger toast when registerSuccess or registerError changes
+  useEffect(() => {
+    if (registerSuccess) {
+      toast.success(registerSuccess, {
+        autoClose: 1500,
+        onClose: () => {
+          // Navigate after toast closes
+          navigate(location?.state ? location.state : "/");
+        },
+      });
+    }
+  }, [registerSuccess, navigate, location]);
+
+  useEffect(() => {
+    if (registerError) {
+      toast.error(registerError); // Show error toast
+    }
+  }, [registerError]);
+
   return (
     <div>
+      <ToastContainer autoClose={2000} />
       <section className="bg-gray-100 dark:bg-gray-900">
         <div className="container flex items-center justify-center min-h-screen px-6 mx-auto ">
           <form onSubmit={handleRegistration} className="w-full max-w-md">
@@ -121,7 +151,7 @@ const Registration = () => {
               />
             </div>
 
-            {/* password  */}
+            {/* password */}
             <div className="relative flex items-center mt-4">
               <span className="absolute">
                 <svg
@@ -173,7 +203,7 @@ const Registration = () => {
               />
             </div>
 
-            {/* registration  */}
+            {/* registration */}
             <div className="mt-6">
               <button
                 type="submit"
@@ -181,6 +211,16 @@ const Registration = () => {
               >
                 Registration
               </button>
+              {registerError && (
+                <div className="text-red-500 mx-auto text-center my-2 font-semibold">
+                  {registerError}
+                </div>
+              )}
+              {registerSuccess && (
+                <p className="text-green-500 mx-auto text-center my-2 font-semibold">
+                  {registerSuccess}
+                </p>
+              )}
               <div className="mt-6 text-center ">
                 <Link to={"/login"} className="text-blue-600 font-semibold">
                   Already have an account?
