@@ -30,13 +30,12 @@ const Registration = () => {
 
     createUser(email, password)
       .then((result) => {
+        // eslint-disable-next-line no-unused-vars
+        const user = result.user;
         setRegisterSuccess("User created successfully.");
         // navigate(location?.state ? location.state : "/");
-
-        console.log(result.user);
       })
       .catch((error) => {
-        console.error(error);
         setRegisterError(error.message);
       });
   };

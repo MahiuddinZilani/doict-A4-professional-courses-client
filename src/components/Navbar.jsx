@@ -92,14 +92,14 @@ const Navbar = () => {
                   data-tooltip-id="my-tooltip"
                   data-tooltip-content="Click Here to find LogOut"
                 >
-                  <div className="w-9 rounded-full ">
+                  <div className="w-12 rounded-full ">
                     {user.photoURL ? (
                       <img
                         alt="Tailwind CSS Navbar component"
                         src={user.photoURL}
                       />
                     ) : (
-                      <RxAvatar className="text-4xl"></RxAvatar>
+                      <RxAvatar className="text-5xl font-semibold bg-[#242145] hover:scale-105 transition-transform duration-100"></RxAvatar>
                     )}
                   </div>
                 </div>
@@ -126,9 +126,9 @@ const Navbar = () => {
                   <Link
                     to={"/"}
                     onClick={handleLogOut}
-                    className="w-full mx-auto flex justify-center items-center mt-4 bg-blue-600 rounded-lg"
+                    className="w-full  mx-auto flex justify-center items-center mt-4 bg-[#242145] rounded-lg "
                   >
-                    <button className="mx-auto py-2 font-semibold text-white">
+                    <button className="mx-auto py-2 font-bold text-lg bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent hover:scale-125 transition-transform duration-100">
                       Log Out
                     </button>
                   </Link>

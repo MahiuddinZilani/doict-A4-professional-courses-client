@@ -10,8 +10,8 @@ const Products = () => {
   console.log(courses, name);
 
   return (
-    <div className="max-w-screen-lg mx-auto my-4 md:my-10">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="max-w-screen-lg mx-auto my-4 md:my-10 ">
+      <div className="w-2/3 lg:w-full mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {courses.map((course) => (
           <CourseCard key={course?._id} course={course}></CourseCard>
         ))}

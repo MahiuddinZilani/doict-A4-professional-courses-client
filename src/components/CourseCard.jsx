@@ -17,7 +17,7 @@ const CourseCard = ({ course }) => {
   return (
     <div className="bg-white shadow-md rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300 ease-in-out transform hover:scale-105">
       {/* Course Image */}
-      <div className="relative h-56">
+      <div className="relative h-36 md:56">
         <img
           src={img_url}
           alt={title}
@@ -29,15 +29,15 @@ const CourseCard = ({ course }) => {
       </div>
 
       {/* Course Content */}
-      <div className="p-6 bg-gray-50">
-        <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+      <div className="p-4 bg-gray-100">
+        <h3 className="text-lg font-bold text-gray-900">{title}</h3>
         <div className="flex items-center justify-between mt-3">
           <span className="text-sm text-gray-500">Duration: {duration}</span>
           <span className="text-lg font-bold text-teal-600">${price}</span>
         </div>
 
         {/* Author Information */}
-        <div className="flex items-center mt-5">
+        <div className="flex items-center mt-4">
           <img
             src={author_img_url}
             alt={author}
@@ -51,7 +51,7 @@ const CourseCard = ({ course }) => {
       </div>
 
       {/* Footer with Call-to-Action */}
-      <div className="bg-gray-100 p-4">
+      <div className="bg-gray-200 py-2 px-8">
         <Link to={`/products/${course_id}`}>
           <button className="w-full py-2 bg-[#242145] text-white font-semibold rounded-lg hover:bg-pink-900 transition-colors duration-300">
             See Course Details

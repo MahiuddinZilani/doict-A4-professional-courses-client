@@ -1,15 +1,18 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import logo from "/logo.png";
 import SocialMediaLogIn from "../components/SocialMediaLogIn";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
+  const [loginError, setLoginError] = useState("");
+  const [loginSuccess, setLoginSuccess] = useState("");
 
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -19,17 +22,41 @@ const Login = () => {
     const password = form.get("password");
 
     e.target.reset();
+    setLoginError("");
+    setLoginSuccess("");
 
     login(email, password)
       .then((result) => {
-        console.log(result.user);
-        navigate(location?.state ? location.state : "/");
+        // eslint-disable-next-line no-unused-vars
+        const user = result.user;
+        setLoginSuccess("Login Successful");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setLoginError(error.message);
+      });
   };
+
+  // Toast and Navigation effect
+  useEffect(() => {
+    if (loginSuccess) {
+      toast.success(loginSuccess, {
+        autoClose: 1500, // Close after 1.5s
+        onClose: () => {
+          navigate(location?.state ? location.state : "/"); // Navigate only after toast is closed
+        },
+      });
+    }
+  }, [loginSuccess, navigate, location]);
+
+  useEffect(() => {
+    if (loginError) {
+      toast.error(loginError); // Show error toast
+    }
+  }, [loginError]);
 
   return (
     <div>
+      <ToastContainer autoClose={2000} />
       <div className="w-2/3 md:max-w-md px-8 py-4 m-auto mx-auto my-4 bg-white rounded-lg shadow-md dark:bg-gray-800">
         <div className="flex justify-center mx-auto">
           <img className="w-20 h-12 md:h-18" src={logo} alt="" />
@@ -78,6 +105,16 @@ const Login = () => {
               Log In
             </button>
           </div>
+          {loginError && (
+            <div className="text-red-500 mx-auto text-center my-2 font-semibold">
+              {loginError}
+            </div>
+          )}
+          {loginSuccess && (
+            <p className="text-green-500 mx-auto text-center my-2 font-semibold">
+              {loginSuccess}
+            </p>
+          )}
         </form>
 
         {/* other login title */}
